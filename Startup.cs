@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Concord_Cougars_Course_Project
     //Team Concord Cougars
-    //Teresa Lord, Paige Ferguson, Chandler Howland, Richard Rademann, Melissa Richardson, Donavan Cann
+    //Teresa Lord, Donavan Cann, Paige Ferguson, Chandler Howland, Richard Rademann, Melissa Richardson
     //CISS 411
     //Software Architechture and Testing
 {
