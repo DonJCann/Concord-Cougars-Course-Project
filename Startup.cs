@@ -14,6 +14,7 @@ namespace Concord_Cougars_Course_Project
     //Teresa Lord, Donavan Cann, Paige Ferguson, Chandler Howland, Richard Rademann, Melissa Richardson
     //CISS 411
     //Software Architechture and Testing
+    //Sprint 1 started: 6/7/2022
 {
     public class Startup
     {
