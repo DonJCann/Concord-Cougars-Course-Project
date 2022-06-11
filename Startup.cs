@@ -4,10 +4,12 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Concord_Cougars_Course_Project.Models;
 
 namespace Concord_Cougars_Course_Project
     //Team Concord Cougars
@@ -26,6 +28,11 @@ namespace Concord_Cougars_Course_Project
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            var connection =
+                @"Server=(localdb)\mssqllocaldb;Database=SwimSchoolDb;
+                    Trusted_Connection=True;";
+            services.AddDbContext<SwimSchoolDbContext>
+                (options => options.UseSqlServer(connection));
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
