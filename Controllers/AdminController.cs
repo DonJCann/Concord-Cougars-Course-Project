@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Concord_Cougars_Course_Project.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,12 +13,13 @@ namespace Concord_Cougars_Course_Project.Controllers
 {
     public class AdminController : Controller
     {
+
         SwimSchoolDbContext db;
         public AdminController(SwimSchoolDbContext db)
         {
             this.db = db;
         }
-
+        [Authorize]
         public IActionResult Index()
         {
             return View();

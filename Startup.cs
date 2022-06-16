@@ -1,22 +1,27 @@
+//Team Concord Cougars
+//Teresa Lord, Donavan Cann, Paige Ferguson, Chandler Howland, Richard Rademann, Melissa Richardson
+//CISS 411
+//Software Architechture and Testing
+//Sprint 1 started: 6/7/2022
+//Sprint 2 started: 6/15/2022
+
+using Concord_Cougars_Course_Project.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Concord_Cougars_Course_Project.Models;
+
 
 namespace Concord_Cougars_Course_Project
-    //Team Concord Cougars
-    //Teresa Lord, Donavan Cann, Paige Ferguson, Chandler Howland, Richard Rademann, Melissa Richardson
-    //CISS 411
-    //Software Architechture and Testing
-    //Sprint 1 started: 6/7/2022
+
 {
     public class Startup
     {
@@ -33,6 +38,9 @@ namespace Concord_Cougars_Course_Project
                     Trusted_Connection=True;";
             services.AddDbContext<SwimSchoolDbContext>
                 (options => options.UseSqlServer(connection));
+            services.AddIdentity<ApplicationUser, IdentityRole>()  //Added for Identity - Entity is ApplicationUser class model
+                .AddEntityFrameworkStores<SwimSchoolDbContext>()  //Added for Identity
+                .AddDefaultTokenProviders();                      //Added for Identity
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -48,6 +56,8 @@ namespace Concord_Cougars_Course_Project
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthentication();  //Added for Identity
+            app.UseAuthorization();   //Added for Identity
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
