@@ -85,5 +85,10 @@ namespace Concord_Cougars_Course_Project.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Login");
         }
+        public IActionResult AllUser()
+        {
+            var users = db.Users.ToList();
+            return View(users);
+        }
     }
 }
