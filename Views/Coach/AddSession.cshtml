@@ -1,0 +1,13 @@
+﻿@model Concord_Cougars_Course_Project.Models.Session
+<form asp-controller="Coach" asp-action="AddSession"
+    method="post">
+    <label asp-for="SkillLevel"></label>
+    <input asp-for="SkillLevel" />
+    <br />
+    <label asp-for="SessionCapacity"></label>
+    <input asp-for="SessionCapacity" />
+    <br />
+    <input asp-for="CoachId" type="hidden" />
+    <br />
+    <button type="submit">Add Session</button>
+</form>
