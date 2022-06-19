@@ -72,6 +72,17 @@ namespace Concord_Cougars_Course_Project.Controllers
                     (vm.Email, vm.Password, false, false);
                 if (result.Succeeded)
                 {
+                    //process user logins for coaches and swimmers
+                    var user = await userManager.FindByEmailAsync(vm.Email);
+                    var roles = await userManager.GetRolesAsync(user);
+                    if (roles.Contains("Coach"))
+                    {
+                        return RedirectToAction("Index", "Coach");
+                    }
+                    else if (roles.Contains("Swimmer"))
+                    {
+                        return RedirectToAction("Index", "Swimmer");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Login Failure.");
