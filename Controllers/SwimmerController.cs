@@ -22,5 +22,19 @@ namespace Concord_Cougars_Course_Project.Controllers
         {
             return View();
         }
+        public IActionResult AddProfile()
+        {
+            var currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            Swimmer swimmer = new Swimmer();
+            if (db.Swimmers.Any(i => i.UserId == currentUserId))
+            {
+                swimmer = db.Swimmers.FirstOrDefault(i => i.UserId == currentUserId);
+            }
+            else
+            {
+                swimmer.UserId = currentUserId;
+            }
+            return View(swimmer);
+        }
     }
 }
