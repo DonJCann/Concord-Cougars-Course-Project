@@ -18,7 +18,7 @@ namespace Concord_Cougars_Course_Project.Controllers
         public async Task<IActionResult> AllSession()
         {
             var session = await db.Sessions
-                .Include(c => c.Coach).ToListAsyn();
+                .Include(c => c.Coach).ToListAsync();
             return View(session);
         }
         public IActionResult Index()
