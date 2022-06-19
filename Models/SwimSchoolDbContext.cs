@@ -13,6 +13,8 @@ namespace Concord_Cougars_Course_Project.Models
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Coach> Coachs { get; set; }
         public DbSet<Session> Sessions { get; set; }
+        public DbSet<Swimmer> Swimmers { get; set; }
+        public DbSet<Enrollment> Enrollments { get; set; }
         public SwimSchoolDbContext(DbContextOptions
             <SwimSchoolDbContext> options)
             : base(options)
