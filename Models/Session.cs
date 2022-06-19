@@ -13,7 +13,7 @@ namespace Concord_Cougars_Course_Project.Models
         public string SkillLevel { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public string DayTime { get; set; }
+        public string DateTime { get; set; }
         public int SessionCapacity {get; set;}
        
     }

@@ -1,5 +1,5 @@
 ﻿using Concord_Cougars_Course_Project.Models;
-using Concord_Cougars_Course_Project.Views.Shared;
+//using Concord_Cougars_Course_Project.Views.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +25,7 @@ namespace Concord_Cougars_Course_Project.Controllers
         {
             return View();
         }
-        public async Task<IActionResult> AddSession()
+ /*       public async Task<IActionResult> AddSession()
         {
             var CoachDisplay = await db.Coachs.Select(x => new
             {
