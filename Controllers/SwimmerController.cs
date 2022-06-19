@@ -54,5 +54,11 @@ namespace Concord_Cougars_Course_Project.Controllers
             await db.SaveChangesAsync();
             return View("Index");
         }
+        //session registration methods
+        public async Task<IActionResult> AllSession()
+        {
+            var session = await db.Sessions.Include(c => c.Coach).ToListAsync();
+            return View(session);
+        }
     }
 }
