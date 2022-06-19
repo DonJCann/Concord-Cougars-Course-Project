@@ -22,6 +22,7 @@ namespace Concord_Cougars_Course_Project.Controllers
         {
             return View();
         }
+        //Add Swimmer profile methods
         public IActionResult AddProfile()
         {
             var currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -35,6 +36,23 @@ namespace Concord_Cougars_Course_Project.Controllers
                 swimmer.UserId = currentUserId;
             }
             return View(swimmer);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddProfile (Swimmer swimmer)
+        {
+            var currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (db.Swimmers.Any(i => i.UserId == currentUserId))
+            {
+                var swimmerToUpdate = db.Swimmers.FirstOrDefault(i => i.UserId == currentUserId);
+                swimmerToUpdate.SwimmerName = swimmer.SwimmerName;
+                db.Update(swimmerToUpdate);
+            }
+            else
+            {
+                db.Add(swimmer);
+            }
+            await db.SaveChangesAsync();
+            return View("Index");
         }
     }
 }
