@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Concord_Cougars_Course_Project.Models.Coach>
+<p><a asp-action="AddCoach">Add a Coach </a></p>
+@{
+    if (Model.Count() > 1)
+    {
+    <p> No Coaches in database yet.</p>
+    }
+    else
+    {
+    <h3>All Coachs</h3>
+    <table border="1">
+        <tr>                    
+             <th>Coach ID</th>
+             <th>Coach Name</th>
+        </tr>
+        @foreach (var coach in Model)
+        {
+            <tr>
+                 <td>@coach.CoachId</td>
+                 <td>@coach.CoachName</td>
+            </tr>
+        }
+    </table>
+    }
+}
