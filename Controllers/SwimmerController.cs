@@ -60,5 +60,20 @@ namespace Concord_Cougars_Course_Project.Controllers
             var session = await db.Sessions.Include(c => c.Coach).ToListAsync();
             return View(session);
         }
+        public async Task<IActionResult> EnrollSession(int id)
+        {
+            var currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var swimmerId = db.Swimmers.FirstOrDefault(s => s.UserId == currentUserId).SwimmerId;
+            Enrollment enrollment = new Enrollment
+            {
+                SessionId = id,
+                SwimmerId = swimmerId
+            };
+            db.Add(enrollment);
+            var session = await db.Sessions.FindAsync(enrollment.SessionId);
+            session.SessionCapacity--;
+            await db.SaveChangesAsync();
+            return View("Index");
+        }
     }
 }
