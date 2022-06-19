@@ -23,25 +23,25 @@ namespace Concord_Cougars_Course_Project.Controllers
         {
             return View();
         }       
-        public IActionResult AddCoach(int currentUserId)
+        public IActionResult AddCoach()
         {
             var currentUserId = this.User.FindFirst
                 (ClaimTypes.NameIdentifier).Value;
             Coach coach = new Coach();
-            if(db.Coachs.Any(i => i.CoachId == currentUserId))
+            if(db.Coachs.Any(i => i.UserId == currentUserId))
             {
                 coach = db.Coachs.FirstOrDefault
-                    (i => i.CoachId == currentUserId);
+                    (i => i.UserId == currentUserId);
             }
             else
             {
-                coach.CoachId = currentUserId;
+                coach.UserId = currentUserId;
             }
             return View(coach);
 
        }
         [HttpPost]
-        public async Task<IActionResult> AddProfile
+        public async Task<IActionResult> AddCoach
             (Coach coach)
         {
             var currentUserId = this.User.FindFirst

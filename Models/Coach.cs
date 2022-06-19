@@ -10,6 +10,7 @@ namespace Concord_Cougars_Course_Project.Models
     {
         public int CoachId { get; set; }
         public string CoachName { get; set; }
+        public string UserId { get; set; }
         public ICollection<Lesson> lessonId { get; set; }
         public ICollection<Lesson> SkillLevel {get; set;}
     }
