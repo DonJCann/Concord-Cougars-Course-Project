@@ -83,6 +83,10 @@ namespace Concord_Cougars_Course_Project.Controllers
                     {
                         return RedirectToAction("Index", "Swimmer");
                     }
+                    else if (roles.Contains("Admin"))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Login Failure.");
