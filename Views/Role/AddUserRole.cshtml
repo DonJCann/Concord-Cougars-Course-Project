@@ -1,7 +1,7 @@
 ﻿@model Concord_Cougars_Course_Project.ViewModels.RoleAddUserRoleViewModel
 <p>Pick a role for @Model.User.UserName</p>
 
-<form asp-controller="Role" asp-action="AddUserRole">
+<form asp-controller="Role" asp-action="AddUserRole" method="post">
     <div asp-validation-summary="All"></div>
     <input asp-for="@Model.User.Id" type="hidden" />
     <label asp-for="Role"></label>
@@ -9,4 +9,4 @@
     <br />
     <button type="submit">Add Role</button>
 </form>
-<p><a asp-controller="Account" asp-action="AddUser">Back to user list</a></p>
+<p><a asp-controller="Account" asp-action="AllUser">Back to user list</a></p>

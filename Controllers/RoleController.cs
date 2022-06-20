@@ -1,16 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Concord_Cougars_Course_Project.Models;
+using Concord_Cougars_Course_Project.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Concord_Cougars_Course_Project.Models;
-using Concord_Cougars_Course_Project.ViewModels;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Rendering;
-
 
 namespace Concord_Cougars_Course_Project.Controllers
 {
+ //   [Authorize(Roles = "Admin")]
     public class RoleController : Controller
     {
         SwimSchoolDbContext db;
@@ -47,7 +48,7 @@ namespace Concord_Cougars_Course_Project.Controllers
             RoleAddUserRoleViewModel vm = new RoleAddUserRoleViewModel();
             var user = await userManager.FindByIdAsync(id);
             vm.User = user;
-            vm.RoleList = new SelectList(roleDisplay, "Id", "value");
+            vm.RoleList = new SelectList(roleDisplay, "Id", "Value");
             return View(vm);
         }
         [HttpPost]
@@ -58,14 +59,14 @@ namespace Concord_Cougars_Course_Project.Controllers
             var result = await userManager.AddToRoleAsync(user, role.Name);
             if(result.Succeeded)
             {
-                return RedirectToAction("AllUsers", "Account");
+                return RedirectToAction("AllUser", "Account");
 
             }
             foreach(var error in result.Errors)
             {
                 ModelState.AddModelError(error.Code, error.Description);
             }
-            var roleDisplay = db.Roles.Select(x => new { Id = x.Id, value = x.Name }).ToList();
+            var roleDisplay = db.Roles.Select(x => new { Id = x.Id, Value = x.Name }).ToList();
             vm.User = user;
             vm.RoleList = new SelectList(roleDisplay, "Id", "Value");
             return View(vm);
