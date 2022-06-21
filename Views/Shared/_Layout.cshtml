@@ -39,6 +39,12 @@
         </form>
     }
 
+    @if (!this.User.Identity.IsAuthenticated)
+    {
+        <a asp-controller="Account" asp-action="Login">
+            <div>Log In</div>
+        </a>
+    }
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
