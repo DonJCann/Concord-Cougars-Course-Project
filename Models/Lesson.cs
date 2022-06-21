@@ -9,6 +9,7 @@ namespace Concord_Cougars_Course_Project.Models
     {
         public int LessonId { get; set; }
         public string SkillLevel { get; set; }
-        public decimal tuition { get; set; } 
+        public decimal tuition { get; set; }
+        public ICollection<Session> Sessions { get; set; }  // A Lesson can have 0 to many Sessions
     }
 }

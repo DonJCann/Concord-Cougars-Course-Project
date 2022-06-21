@@ -12,7 +12,6 @@ namespace Concord_Cougars_Course_Project.Models
         public string CoachName { get; set; }
         public string UserId { get; set; }
         public virtual ApplicationUser User { get; set; }
-        public ICollection<Lesson> Lessons { get; set; }  //Updated removed LessionId and added Lessons as the collection
-//        public ICollection<Lesson> SkillLevel {get; set;}
+        public ICollection<Session> Sessions { get; set; }  //A Coach can teash 0 to many Sessions
     }
 }
