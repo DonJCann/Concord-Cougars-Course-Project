@@ -16,7 +16,7 @@ namespace Concord_Cougars_Course_Project.Models
         public int SwimmerId { get; set; }
         public int SessionId { get; set; }
         public Swimmer Swimmer { get; set; }
-        public Session Seission { get; set; }
+        public Session Session { get; set; }
         [DisplayFormat(NullDisplayText = "No Progres Report")]
         public ProgressReport? ProgressReport { get; set; }
     }

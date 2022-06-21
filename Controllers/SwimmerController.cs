@@ -75,5 +75,24 @@ namespace Concord_Cougars_Course_Project.Controllers
             await db.SaveChangesAsync();
             return View("Index");
         }
+        //methods to check progress reports
+        public async Task<IActionResult> CheckProgressReport()
+        {
+            ClaimsPrincipal currentUser = this.User;
+            var currentUserId = currentUser.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (currentUserId == null)
+            {
+                return NotFound();
+            }
+            var swimmer = await db.Swimmers.SingleOrDefaultAsync(s => s.UserId == currentUserId);
+            var swimmerId = swimmer.SwimmerId;
+            var allSessions = await db.Enrollments.Include(e => e.Session).Where(c => c.SwimmerId == swimmerId).ToListAsync();
+            if (allSessions == null)
+            {
+                return NotFound();
+            }
+            ViewData["sname"] = swimmer.SwimmerName;
+            return View(allSessions);
+        }
     }
 }
