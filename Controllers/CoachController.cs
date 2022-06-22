@@ -115,5 +115,29 @@ namespace Concord_Cougars_Course_Project.Controllers
             var lessons = await db.Lessons.ToListAsync();
             return View(lessons);
         }
+        public async Task<IActionResult>PostProgressReport(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var allSwimmers = await db.Enrollments.Include(c => c.Session).Where(c => c.SessionId == id).ToListAsync();
+            if (allSwimmers == null)
+            {
+                return NotFound();
+            }
+            return View(allSwimmers);
+        }
+        [HttpPost]
+        public IActionResult PostProgressReport(List<Enrollment> enrollments)
+        {
+            foreach (var enrollment in enrollments)
+            {
+                var er = db.Enrollments.Find(enrollment.EnrollmentId);
+                er.ProgressReport = enrollment.ProgressReport;
+            }
+            db.SaveChanges();
+            return RedirectToAction("SessionByCoach");
+        }
     }
 }

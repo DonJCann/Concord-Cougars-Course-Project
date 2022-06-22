@@ -1,0 +1,21 @@
+﻿@model List<Concord_Cougars_Course_Project.Models.Enrollment>
+<h2>Enter Swimmer Progress Report</h2>
+<h3>Session: @Model[0].Session.SessionId</h3>
+<form asp-copntroller="Coach" asp-action="PostProgressReport" method="post">
+    <table border="1">
+        <tr>
+            <th></th>
+            <th>Swimmer Id</th>
+            <th>Progress Report</th>
+        </tr>
+        @for (int i = 0; i < Model.Count(); i++)
+            {
+            <tr>
+                <td><input asp-for="@Model[i].EnrollmentId" type="hidden" value="@Model[i].EnrollmentId" /></td>
+                <td>@Model[i].SwimmerId</td>
+                <td><input asp-for="@Model[i].ProgressReport" /></td>
+            </tr>
+            }
+    </table>
+    <input type="submit" value="Submit" />
+</form>

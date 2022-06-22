@@ -14,7 +14,7 @@
                     <th>Session Id</th>
                     <th>Skill Level</th>
                     <th>Session Capacity</th>
-                    
+                    <th>Post Progress Report</th>
                 </tr>
                 @foreach (var session in Model)
                 {
@@ -22,8 +22,10 @@
                         <td>@session.SessionId</td>
                         <td>@session.SkillLevel</td>
                         <td>@session.SessionCapacity</td>
+                        <td><a asp-controller="Coach" asp-action="PostProgressReport" asp-route-id="@session.SessionId">Post progress report</a></td>
                     </tr>
                 }
             </table>
         }
     }
+<p><a asp-action="Index">Back to coach home.</a></p>
