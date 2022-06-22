@@ -13,13 +13,13 @@ namespace Concord_Cougars_Course_Project.Controllers
 {
     public class AdminController : Controller
     {
-
         SwimSchoolDbContext db;
         public AdminController(SwimSchoolDbContext db)
         {
             this.db = db;
         }
-        [Authorize]
+        //[Authorize(Roles = "Admin")] //Uncomment ater you have added at least one admin user with an Admin role
+        [Authorize]  //Comment out once you have added one admin user with an Admin role and uncomment above authorize for Admin role
         public IActionResult Index()
         {
             return View();

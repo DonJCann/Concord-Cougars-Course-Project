@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Concord_Cougars_Course_Project.Controllers
 {
- //   [Authorize(Roles = "Admin")]
+ //   [Authorize(Roles = "Admin")] //Uncomment ater you have added at least one admin user with an Admin role
     public class RoleController : Controller
     {
         SwimSchoolDbContext db;
