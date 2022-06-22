@@ -1,0 +1,20 @@
+﻿@model Concord_Cougars_Course_Project.ViewModels.SessionAddSessionViewModel
+<h2>Add a Session for Lesson @ViewBag.Lesson.LessonId TempData@ViewBag.Lesson.SkillLevel</h2>
+<form asp-controller="Session" asp-action="AddSession"
+      method="post">
+    <input asp-for="Lesson" type="hidden"
+           value="@Model.Lesson" />
+    <label asp-for="Session.StartTime">Start Date</label>
+    <input asp-for="Session.StartTime" />
+    <br />
+    <label asp-for="Session.EndTime">End Date</label>
+    <input asp-for="Session.EndTime" />
+    <br />
+    <label asp-for="Session.SessionCapacity">Seat Capacity</label>
+    <input asp-for="Session.SessionCapacity" />
+    <br />
+    <label asp-for="Session.DateTime">Daily Start Time</label>
+    <input asp-for="Session.DateTime" />
+    <br />
+    <button type="submit">Add Session</button>
+</form>

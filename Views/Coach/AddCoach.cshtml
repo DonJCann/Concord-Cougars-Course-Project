@@ -1,0 +1,11 @@
+﻿@model Concord_Cougars_Course_Project.Models.Coach
+<h2>Add your Profile</h2>
+<form asp-controller="Coach"
+      asp-action="AddCoach" method="post">
+    <input asp-for="@Model.UserId" type="hidden" />
+    <label asp-for="CoachName"></label>
+    <input asp-for="CoachName" />
+    <br />
+    <button type="submit">Add Profile</button>
+</form>
+<p><a asp-action="Index">Back to Coach Home</a></p>
