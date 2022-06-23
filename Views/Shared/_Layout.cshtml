@@ -37,6 +37,9 @@
         <form method="post" asp-controller="Account" asp-action="Logout">
             <input type="submit" value="Logout" />
         </form>
+        <a asp-controller="Account" asp-action="ToMyPortal">
+            <div>Return to menu.</div>
+        </a>
     }
 
     @if (!this.User.Identity.IsAuthenticated)

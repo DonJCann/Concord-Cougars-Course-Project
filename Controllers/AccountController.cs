@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Concord_Cougars_Course_Project.Controllers
@@ -104,6 +105,24 @@ namespace Concord_Cougars_Course_Project.Controllers
         {
             var users = db.Users.ToList();
             return View(users);
+        }
+        // Method to handle redirect to User's Portal
+        public IActionResult ToMyPortal()
+
+        {
+           if (User.IsInRole("Admin"))
+           {
+                return RedirectToAction("Index", "Admin");
+           }
+           else if (User.IsInRole("Coach"))
+           {
+                return RedirectToAction("Index", "Coach");
+           }
+           else if (User.IsInRole("Swimmer"))
+           {
+                return RedirectToAction("Index", "Swimmer");
+           }
+           return RedirectToAction("Index", "Home");
         }
     }
 }
