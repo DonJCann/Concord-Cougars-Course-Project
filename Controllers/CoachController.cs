@@ -122,9 +122,11 @@ namespace Concord_Cougars_Course_Project.Controllers
             }
 
             var allSwimmers = await db.Enrollments.Include(c => c.Session).Where(c => c.SessionId == id).ToListAsync();
-            if (allSwimmers == null)
+            if (allSwimmers.Count < 1)
+            // if (allSwimmers == null)
             {
-                return NotFound();
+                return NotFound("No Enrollments");
+                // return NotFound();
             }
             return View(allSwimmers);
         }
