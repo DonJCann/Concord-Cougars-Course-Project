@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<Concord_Cougars_Course_Project.Models.Enrollment>
 <h3>Swimmer Name: @ViewData["sname"]</h3>
-<table border="1">
-    <tr>
-        <th>Session Name</th>
-        <th>Progress Report</th>
-    </tr>
-    @foreach (var c in Model)
-            {
-                <tr>
-                    <td>@c.Session.SessionId</td>
-                    <td>@Html.DisplayFor(m => c.ProgressReport)</td>
-                </tr>
-            }
-</table>
-<p><a asp-action="Index">Back to Swimmer Home</a></p>
+    <table border="1">
+        <tr>
+            <th>Session Name</th>
+            <th>Progress Report</th>
+        </tr>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Session.SessionId</td>
+                <td>@Html.DisplayFor(m => c.ProgressReport)</td>
+            </tr>
+        }
+    </table>
+    <p><a asp-action="Index">Back to Swimmer Home</a></p>

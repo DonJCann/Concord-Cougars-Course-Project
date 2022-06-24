@@ -57,6 +57,28 @@ namespace Concord_Cougars_Course_Project.Controllers
         //session registration methods
         public async Task<IActionResult> AllSession()
         {
+            // Inserted test for Profile
+            var currentUserId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            if (db.Swimmers.Any(s => s.UserId == currentUserId))
+            {
+                var swimmerToTest = db.Swimmers.FirstOrDefault
+                    (t => t.UserId == currentUserId);
+                if (swimmerToTest.SwimmerName == null)
+                {
+                    ViewBag.profileExist = false;
+                }
+                else
+                {
+                    ViewBag.profileExist = true;
+                }
+
+            }
+            else
+            {
+                ViewBag.profileExist = false;
+            }
+            // End insert for Profile
+
             var session = await db.Sessions.Include(c => c.Coach).ToListAsync();
             return View(session);
         }

@@ -1,7 +1,11 @@
 ﻿@model IEnumerable<Concord_Cougars_Course_Project.Models.Session>
 <p><a asp-action="AddSessions"> add a Session</a></p>
 @{
-    if (Model.Count() < 1)
+    if (@ViewBag.profileExist == false)
+    {
+        <p>You must add your profile before you can enroll in sessions</p>
+    }
+    else if (Model.Count() < 1)
     {
         <p> No Sessions in database yet.</p>
     }
@@ -28,15 +32,15 @@
                     <td>@session.StartTime</td>
                     <td>@session.EndTime</td>
                     <td>
-                        @{ 
+                        @{
                             if (session.SessionCapacity < 1)
-                    {
-                        <p>Full Session</p>
+                            {
+                                <p>Full Session</p>
                             }
                             else
-                    {
+                            {
                                 <a asp-controller="Swimmer" asp-action="EnrollSession" asp-route-id="@session.SessionId"> Register</a>
-                    }
+                            }
                         }
                     </td>
                 </tr>
