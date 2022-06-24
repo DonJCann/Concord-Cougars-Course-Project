@@ -1,5 +1,5 @@
 ﻿@model Concord_Cougars_Course_Project.ViewModels.SessionAddSessionViewModel
-<h2>Add a Session for Lesson @ViewBag.Lesson.LessonId TempData@ViewBag.Lesson.SkillLevel</h2>
+<h2>Add a Session for Lesson @ViewBag.Lesson.LessonId @ViewBag.Lesson.SkillLevel</h2>
 <form asp-controller="Session" asp-action="AddSession"
       method="post">
     <input asp-for="Lesson" type="hidden"
