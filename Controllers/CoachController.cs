@@ -109,7 +109,6 @@ namespace Concord_Cougars_Course_Project.Controllers
             {
                 ViewBag.profileExist = false;
             }
-
             // ViewBag.coachName = db.Coachs.FirstOrDefault
             //    (c => c.UserId == currentId).CoachName;
             var lessons = await db.Lessons.ToListAsync();
@@ -121,6 +120,7 @@ namespace Concord_Cougars_Course_Project.Controllers
             {
                 return NotFound();
             }
+
             var allSwimmers = await db.Enrollments.Include(c => c.Session).Where(c => c.SessionId == id).ToListAsync();
             if (allSwimmers == null)
             {

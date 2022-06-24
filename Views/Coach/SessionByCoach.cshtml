@@ -1,31 +1,34 @@
 ﻿@model IEnumerable<Concord_Cougars_Course_Project.Models.Session>
 <h2>@Model.FirstOrDefault().Coach.CoachName</h2>
-    @{
-        if (Model.Count() < 1)
-        {
-            <p> You don't have a Session yet. <a asp-for="AddSession"> 
-                    Add a Session</a></p>
-        }
-        else
-        {
-            <h3>All Sessions</h3>
-            <table border="1">
-                <tr>
-                    <th>Session Id</th>
-                    <th>Skill Level</th>
-                    <th>Session Capacity</th>
-                    <th>Post Progress Report</th>
-                </tr>
-                @foreach (var session in Model)
-                {
-                    <tr>
-                        <td>@session.SessionId</td>
-                        <td>@session.SkillLevel</td>
-                        <td>@session.SessionCapacity</td>
-                        <td><a asp-controller="Coach" asp-action="PostProgressReport" asp-route-id="@session.SessionId">Post progress report</a></td>
-                    </tr>
-                }
-            </table>
-        }
+@{
+    if (Model.Count() < 1)
+    {
+        <p>
+            You don't have a Session yet. <a asp-for="AddSession">
+                Add a Session
+            </a>
+        </p>
     }
+    else
+    {
+        <h3>All Sessions</h3>
+        <table border="1">
+            <tr>
+                <th>Session Id</th>
+                <th>Skill Level</th>
+                <th>Session Capacity</th>
+                <th>Post Progress Report</th>
+            </tr>
+            @foreach (var session in Model)
+            {
+                <tr>
+                    <td>@session.SessionId</td>
+                    <td>@session.SkillLevel</td>
+                    <td>@session.SessionCapacity</td>
+                    <td><a asp-controller="Coach" asp-action="PostProgressReport" asp-route-id="@session.SessionId">Post progress report</a></td>
+                </tr>
+            }
+        </table>
+    }
+}
 <p><a asp-action="Index">Back to coach home.</a></p>
